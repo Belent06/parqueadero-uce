@@ -33,10 +33,10 @@ import {
 } from 'lucide-react-native';
 
 const COLORS = {
-  primary: '#0B2D5C',
-  primaryDark: '#082245',
-  primaryLight: '#1E4E8C',
-  accent: '#F2A900',
+  primary: '#084771',
+  primaryDark: '#084771',
+  primaryLight: '#808183',
+  accent: '#AD9218',
   success: '#15803D',
   successBg: '#EAF7EE',
   danger: '#B91C1C',
@@ -52,6 +52,8 @@ const COLORS = {
   camBorder: '#334155',
 };
 
+const appLogoPng = require('./assets/Logo.png');
+const uceLogoPng = require('./assets/UCE.png');
 const MONO_FONT = Platform.select({ ios: 'Courier', android: 'monospace', default: 'monospace' });
 
 /* ---------- Reusable pieces ---------- */
@@ -102,12 +104,21 @@ function Header({ title, subtitle }) {
     <View style={styles.header}>
       <View style={styles.headerRow}>
         <View style={styles.headerBadge}>
-          <ShieldCheck size={20} color={COLORS.primary} />
+          <Image 
+          source={appLogoPng} 
+          style={styles.headerLogo} 
+          resizeMode="contain" 
+        />
         </View>
         <View style={{ flex: 1 }}>
           <Text style={styles.headerEyebrow}>Universidad Central del Ecuador</Text>
           <Text style={styles.headerTitle}>{title}</Text>
         </View>
+        <Image 
+          source={uceLogoPng} 
+          style={styles.uceLogo} 
+          resizeMode="contain" 
+        />
       </View>
       <Text style={styles.headerSubtitle}>{subtitle}</Text>
       <View style={styles.guardPill}>
@@ -513,13 +524,13 @@ const styles = StyleSheet.create({
     borderBottomColor: COLORS.accent,
   },
   headerRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  headerBadge: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: COLORS.accent,
-    alignItems: 'center',
-    justifyContent: 'center',
+  headerLogo: {
+    width: 40,
+    height: 40,
+  },
+  uceLogo: {
+    width: 44,
+    height: 44,
   },
   headerEyebrow: {
     fontSize: 11,
