@@ -9,6 +9,7 @@ import {
   TextInput,
   StyleSheet,
   Platform,
+  StatusBar,
 } from 'react-native';
 import {
   Home,
@@ -111,23 +112,23 @@ function Header({ title, subtitle }) {
         />
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={styles.headerEyebrow}>Universidad Central del Ecuador</Text>
           <Text style={styles.headerTitle}>{title}</Text>
+          <Text style={styles.headerSubtitle}>{subtitle}</Text>
+          <View style={styles.guardPill}>
+           <User size={13} color={COLORS.accent} />
+           <Text style={styles.guardPillText}>Guardia: C. Andrade</Text>
+           <Text style={styles.guardDot}>•</Text>
+           <Clock size={13} color={COLORS.accent} />
+           <Text style={styles.guardPillText}>Turno 06:00–14:00</Text>
+         </View>
         </View>
         <Image 
           source={uceLogoPng} 
-          style={styles.uceLogo} 
+          style={styles.uceLogoRight} 
           resizeMode="contain" 
         />
       </View>
-      <Text style={styles.headerSubtitle}>{subtitle}</Text>
-      <View style={styles.guardPill}>
-        <User size={13} color={COLORS.accent} />
-        <Text style={styles.guardPillText}>Guardia: C. Andrade</Text>
-        <Text style={styles.guardDot}>•</Text>
-        <Clock size={13} color={COLORS.accent} />
-        <Text style={styles.guardPillText}>Turno 06:00–14:00</Text>
-      </View>
+
     </View>
   );
 }
@@ -518,19 +519,20 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: COLORS.primary,
     paddingHorizontal: 18,
-    paddingTop: 18,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 15 : 20,
     paddingBottom: 14,
     borderBottomWidth: 4,
     borderBottomColor: COLORS.accent,
   },
   headerRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   headerLogo: {
-    width: 40,
-    height: 40,
+    width: 55,
+    height: 55,
   },
-  uceLogo: {
-    width: 44,
-    height: 44,
+  uceLogoRight: {
+    width: 35,
+    height: 35,
+    marginTop: -15,
   },
   headerEyebrow: {
     fontSize: 11,
